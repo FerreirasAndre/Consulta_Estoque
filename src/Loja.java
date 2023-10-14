@@ -2,14 +2,13 @@ import java.io.*;
 import java.util.ArrayList;
  class Loja {
     String lojaName = "";
-    ArrayList<String> produtos = new ArrayList<String>();
-    ArrayList<Integer> quantidade = new ArrayList<Integer>();
+    ArrayList<String> produtos = new ArrayList<>();
+    ArrayList<Integer> quantidade = new ArrayList<>();
     int quantidadeProdutos;
     public Loja(String nomeLoja){
         int cont = 0;
         String linha = "";
         String url = "src/"+nomeLoja;
-        int cont2 = 0;
 
         try{
             FileReader  arquivo = new FileReader (url); //abre o arquivo para leitura
@@ -48,8 +47,8 @@ import java.util.ArrayList;
             //System.out.println("Produto da lista: " + this.produtos.get(i) + " Quantidade: " + this.quantidade.get(i));
 
             String produtoParcial[] = this.produtos.get(i).split(" ");//separa o nome do produto em um array
-            for (int j =0;j< produtoParcial.length;j++){
-                if (produtoPesquisado.equals(produtoParcial[j].toLowerCase())) {
+            for (String s : produtoParcial) {
+                if (produtoPesquisado.equals(s.toLowerCase())) {
                     this.quantidadeProdutos = this.quantidadeProdutos + this.quantidade.get(i);
                 }
             }

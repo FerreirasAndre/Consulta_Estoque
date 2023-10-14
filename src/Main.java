@@ -4,14 +4,14 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Object> inventarioList = new ArrayList<>();
         boolean controle = false;
-        String controll = "";
+        String controll;
         String produtoPesquisado = "";
         int  somatorioProdutos = 0;
         
         System.out.println("*******************************Seja bem-vindo(a)!**************************");
         //System.out.println("\r\n");
 
-        while (controle == false) {
+        while (!controle) {
             System.out.println("Informe um arquivo de inventário, ou “fim” para encerrar:");
             Scanner entrada = new Scanner(System.in);
             controll = entrada.nextLine();
@@ -27,10 +27,10 @@ public class Main {
                         produtoPesquisado = produto.nextLine().toLowerCase(); //transforma o texto em minúsculo
                         inventario.quantidade = 0;
 
-                        for (int i = 0; i < inventarioList.size(); i++) {
-                            ((Produto) inventarioList.get(i)).pesquisaProdutos(produtoPesquisado);
-                            System.out.println(((Produto) inventarioList.get(i)).quantidadeProdutos +" unidades em " + ((Produto) inventarioList.get(i)).lojaName);
-                            somatorioProdutos = inventario.totalProdutos(((Produto)inventarioList.get(i)).quantidadeProdutos);
+                        for (Object o : inventarioList) {
+                            ((Produto) o).pesquisaProdutos(produtoPesquisado);
+                            System.out.println(((Produto) o).quantidadeProdutos + " unidades em " + ((Produto) o).lojaName);
+                            somatorioProdutos = inventario.totalProdutos(((Produto) o).quantidadeProdutos);
                         }
                         System.out.println(somatorioProdutos + " unidades no total");
                     }
